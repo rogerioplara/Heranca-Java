@@ -46,6 +46,25 @@ public class Main {
         Account acc3 = new SavingsAccount(1004, "Ana", 0.0, 0.01);
 
         //DOWNCASTING - converter uma superclasse para subclasse
+        // conversão não natural, necessário fazer o casting
         BusinessAccount acc4 = (BusinessAccount) acc2;
+        acc4.loan(100.0);
+
+        // Só gera problema quando executar, pois o compilador
+        // não sabe que acc3 é uma savings account, apesar de ter sido instanciada como account
+//        BusinessAccount acc5 = (BusinessAccount)acc3;
+        // downcasting nem sempre da certo - testar com instanceof
+
+        if(acc3 instanceof BusinessAccount) {
+            BusinessAccount acc5 = (BusinessAccount)acc3;
+            acc5.loan(200.0);
+            System.out.println("Loan!");
+        }
+
+        if(acc3 instanceof SavingsAccount){
+            SavingsAccount acc5 = (SavingsAccount) acc3;
+            acc5.updateBalance();
+            System.out.println("Update!");
+        }
     }
 }
