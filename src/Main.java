@@ -25,7 +25,7 @@ public class Main {
 
         =====================================
 
-        Upcasting e Downcasting
+        UPCASTING E DOWNCASTING
 
         Upcasting:
             - casting da subclasse para superclasse
@@ -35,6 +35,42 @@ public class Main {
             - casting da superclasse para subclasse
             - palavra instanceof
             - uso comum: métodos que recebem parâmetros genéricos (ex: Equals)
+
+        ======================================
+
+        SOBREPOSIÇÃO, SUPER, ANOTAÇÃO, @OVERRIDE
+
+        Sobreposição ou Sobrescrita:
+            - é a implementação de um método de uma superclasse na subclasse
+            - é fortemente recomendável usar a anotação @Override em um método sobrescrito
+                - facilita a leitar e compreensão do código
+                - avisamos ao compilador (boa prática)
+
+         =======================================
+
+         SUPER
+            É possível chamar a implementação da superclasse usando a palavra super
+
+         =======================================
+
+         Classes e métodos FINAL
+            - palavra chave: final
+
+            Classe: Evita que seja herdada:
+                public final class SavingsAccount(){}
+
+            Método: Evita que seja sobreposto
+
+         Por que utilizar Final?
+            Segurança: dependendo das regras de negócio, é desejável garantir que uma classe
+            não possa ser herdada ou método sobreposto.
+                - geralmente convém acrescentar final em métodos sobrepostos, pois, sobreposições
+                múltiplas podem gerar inconsistências
+
+            Performance: Atributos de tipo de uma classe final são analisados de forma mais rápida
+            em tempo de execução
+
+
          */
 
         Account acc = new Account(1001, "Alex", 0.0);
@@ -66,5 +102,19 @@ public class Main {
             acc5.updateBalance();
             System.out.println("Update!");
         }
+
+        // Sobreposição
+        Account conta1 = new Account(1001, "Alex", 1000.0);
+        conta1.withdraw(200.0);
+        System.out.println(conta1.getBalance());
+
+        Account conta2 = new SavingsAccount(1002, "Maria", 1000.0, 0.05);
+        conta2.withdraw(200.0);
+        System.out.println(conta2.getBalance());
+
+        // Sobreposição Super
+        Account conta3 = new BusinessAccount(1003, "Motocenter", 1000.0, 500.0);
+        conta3.withdraw(200.0);
+        System.out.println(conta3.getBalance());
     }
 }
