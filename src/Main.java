@@ -70,6 +70,12 @@ public class Main {
             Performance: Atributos de tipo de uma classe final são analisados de forma mais rápida
             em tempo de execução
 
+         =======================================
+
+         CLASSES ABSTRATAS
+            - são classes que não podem ser instanciadas
+            - é uma forma de garantir herança total: somente subclasses não abstratas podem
+            ser instanciadas, mas nunca a superclasse abstrata
 
          */
 
@@ -116,5 +122,7 @@ public class Main {
         Account conta3 = new BusinessAccount(1003, "Motocenter", 1000.0, 500.0);
         conta3.withdraw(200.0);
         System.out.println(conta3.getBalance());
+
+
     }
 }
